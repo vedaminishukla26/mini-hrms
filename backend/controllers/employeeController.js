@@ -1,6 +1,5 @@
 const Employee = require('../models/employeeModel');
 
-// Get all employees
 const getEmployees = async (req, res) => {
   try {
     const employees = await Employee.find().populate('department');
@@ -10,7 +9,6 @@ const getEmployees = async (req, res) => {
   }
 };
 
-// Get employee by ID
 const getEmployeeById = async (req, res) => {
   try {
     const employee = await Employee.findById(req.params.id).populate('department');
@@ -25,7 +23,7 @@ const getEmployeeById = async (req, res) => {
   }
 };
 
-// Create new employee
+
 const createEmployee = async (req, res) => {
   try {
     const newEmployee = new Employee(req.body);
@@ -36,7 +34,6 @@ const createEmployee = async (req, res) => {
   }
 };
 
-// Update employee
 const updateEmployee = async (req, res) => {
   try {
     const updatedEmployee = await Employee.findByIdAndUpdate(
@@ -55,7 +52,6 @@ const updateEmployee = async (req, res) => {
   }
 };
 
-// Delete employee
 const deleteEmployee = async (req, res) => {
   try {
     const employee = await Employee.findByIdAndDelete(req.params.id);
@@ -70,7 +66,6 @@ const deleteEmployee = async (req, res) => {
   }
 };
 
-// Get employees by department
 const getEmployeesByDepartment = async (req, res) => {
   try {
     const employees = await Employee.find({ department: req.params.departmentId }).populate('department');
@@ -80,7 +75,6 @@ const getEmployeesByDepartment = async (req, res) => {
   }
 };
 
-// Export all functions
 module.exports = {
   getEmployees,
   getEmployeeById,

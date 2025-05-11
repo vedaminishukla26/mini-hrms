@@ -19,7 +19,7 @@ const EmployeeList = () => {
         setEmployees(response.data);
         setFilteredEmployees(response.data);
         
-        // Extract unique departments from employee data
+      
         const uniqueDepartments = Array.from(
           new Set(response.data.map(emp => emp.department?.name))
         ).filter(Boolean);
@@ -37,7 +37,7 @@ const EmployeeList = () => {
   }, []);
 
   useEffect(() => {
-    // Filter employees based on search term and department
+   
     const filtered = employees.filter(employee => {
       const fullName = `${employee.firstName} ${employee.lastName}`.toLowerCase();
       const matchesSearch = !searchTerm || 
@@ -116,7 +116,7 @@ const EmployeeList = () => {
         </div>
       </div>
 
-      {/* Employee List */}
+     
       {filteredEmployees.length > 0 ? (
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="overflow-x-auto">

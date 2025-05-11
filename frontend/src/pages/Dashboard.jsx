@@ -73,9 +73,6 @@ const Dashboard = () => {
             View all departments
           </Link>
         </div>
-    
-    
-
       </div>
       
       {/* Quick Links */}

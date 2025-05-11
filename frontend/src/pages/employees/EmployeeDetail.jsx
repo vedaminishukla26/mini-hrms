@@ -19,11 +19,11 @@ const EmployeeDetail = () => {
         // Fetch employee and their leave requests in parallel
         const [employeeResponse, leaveRequestsResponse] = await Promise.all([
           employeeService.getById(id),
-          leaveRequestService.getByEmployeeId(id)
+         
         ]);
         
         setEmployee(employeeResponse.data);
-        setLeaveRequests(leaveRequestsResponse.data);
+        
         setLoading(false);
       } catch (err) {
         console.error('Error fetching employee data:', err);
@@ -78,12 +78,10 @@ const EmployeeDetail = () => {
           </button>
         </div>
       </div>
-
-      {/* Employee Information Card */}
       <div className="bg-white rounded-lg shadow-md overflow-hidden mb-8">
         <div className="p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Personal Information */}
+           
             <div>
               <h2 className="text-lg font-semibold mb-4 text-gray-700">Personal Information</h2>
               <div className="space-y-3">
@@ -128,101 +126,11 @@ const EmployeeDetail = () => {
                   <p className="text-sm text-gray-500">Position</p>
                   <p className="font-medium">{employee.position}</p>
                 </div>
-                <div>
-                  <p className="text-sm text-gray-500">Joining Date</p>
-                  <p className="font-medium">
-                    {employee.joiningDate 
-                      ? new Date(employee.joiningDate).toLocaleDateString() 
-                      : 'Not specified'}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">Salary</p>
-                  <p className="font-medium">${parseFloat(employee.salary).toLocaleString()}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">Status</p>
-                  <span className={`px-2 py-1 rounded-full text-xs ${
-                    employee.isActive 
-                      ? 'bg-green-100 text-green-800' 
-                      : 'bg-red-100 text-red-800'
-                  }`}>
-                    {employee.isActive ? 'Active' : 'Inactive'}
-                  </span>
-                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Leave Requests Section */}
-      <h2 className="text-xl font-semibold mb-4">Leave Requests</h2>
-      
-      <div className="bg-white rounded-lg shadow-md overflow-hidden">
-        <div className="flex justify-between items-center p-6 border-b">
-          <h3 className="text-lg font-medium">Recent Leave Requests</h3>
-          <Link
-            to="/leave-requests/new"
-            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-200"
-          >
-            New Leave Request
-          </Link>
-        </div>
-        
-        {leaveRequests.length > 0 ? (
-          <div className="overflow-x-auto">
-            <table className="min-w-full">
-              <thead>
-                <tr className="bg-gray-50">
-                  <th className="py-3 px-6 text-left">Type</th>
-                  <th className="py-3 px-6 text-left">From</th>
-                  <th className="py-3 px-6 text-left">To</th>
-                  <th className="py-3 px-6 text-left">Duration</th>
-                  <th className="py-3 px-6 text-left">Status</th>
-                  <th className="py-3 px-6 text-left">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {leaveRequests.map((request) => {
-                  const startDate = new Date(request.startDate);
-                  const endDate = new Date(request.endDate);
-                  // Calculate duration in days
-                  const duration = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
-                  
-                  return (
-                    <tr key={request._id} className="border-t">
-                      <td className="py-3 px-6 capitalize">{request.leaveType}</td>
-                      <td className="py-3 px-6">{startDate.toLocaleDateString()}</td>
-                      <td className="py-3 px-6">{endDate.toLocaleDateString()}</td>
-                      <td className="py-3 px-6">{duration} day{duration !== 1 ? 's' : ''}</td>
-                      <td className="py-3 px-6">
-                        <span className={`
-                          px-2 py-1 rounded-full text-xs
-                          ${request.status === 'approved' ? 'bg-green-100 text-green-800' : 
-                            request.status === 'rejected' ? 'bg-red-100 text-red-800' : 
-                            'bg-yellow-100 text-yellow-800'}
-                        `}>
-                          {request.status}
-                        </span>
-                      </td>
-                      <td className="py-3 px-6">
-                        <Link to={`/leave-requests/${request._id}`} className="text-blue-500 hover:underline">
-                          View
-                        </Link>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <div className="p-6 text-center text-gray-500">
-            No leave requests found for this employee.
-          </div>
-        )}
-      </div>
+      </div>               
     </div>
   );
 };

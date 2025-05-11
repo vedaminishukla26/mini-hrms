@@ -14,8 +14,6 @@ const EmployeeForm = () => {
     phone: '',
     department: '',
     position: '',
-    joiningDate: '',
-    salary: '',
     isActive: true,
     address: {
       street: '',
@@ -232,7 +230,7 @@ const EmployeeForm = () => {
             </div>
           </div>
           
-          {/* Employment Information */}
+        
           <div>
             <h2 className="text-lg font-semibold mb-4">Employment Information</h2>
             
@@ -264,35 +262,7 @@ const EmployeeForm = () => {
                 value={formData.position}
                 onChange={handleChange}
               />
-            </div>
-            
-            <div className="mb-4">
-              <label htmlFor="joiningDate" className="block text-sm font-medium text-gray-700 mb-1">Joining Date</label>
-              <input
-                type="date"
-                id="joiningDate"
-                name="joiningDate"
-                className="w-full p-2 border border-gray-300 rounded"
-                value={formData.joiningDate}
-                onChange={handleChange}
-              />
-            </div>
-            
-            <div className="mb-4">
-              <label htmlFor="salary" className="block text-sm font-medium text-gray-700 mb-1">Salary *</label>
-              <input
-                type="number"
-                id="salary"
-                name="salary"
-                required
-                min="0"
-                step="0.01"
-                className="w-full p-2 border border-gray-300 rounded"
-                value={formData.salary}
-                onChange={handleChange}
-              />
-            </div>
-            
+            </div>            
             <div className="mb-4">
               <label className="flex items-center">
                 <input

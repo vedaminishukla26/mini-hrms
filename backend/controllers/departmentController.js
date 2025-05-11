@@ -1,6 +1,5 @@
 const Department = require('../models/departmentModel');
 
-// Get all departments
 const getDepartments = async (req, res) => {
   try {
     const departments = await Department.find().populate('manager');
@@ -10,7 +9,6 @@ const getDepartments = async (req, res) => {
   }
 };
 
-// Get single department
 const getDepartmentById = async (req, res) => {
   try {
     const department = await Department.findById(req.params.id).populate('manager');
@@ -25,7 +23,7 @@ const getDepartmentById = async (req, res) => {
   }
 };
 
-// Create new department
+
 const createDepartment = async (req, res) => {
   try {
     const newDepartment = new Department(req.body);
@@ -36,7 +34,7 @@ const createDepartment = async (req, res) => {
   }
 };
 
-// Update department
+
 const updateDepartment = async (req, res) => {
   try {
     const updatedDepartment = await Department.findByIdAndUpdate(
@@ -55,7 +53,7 @@ const updateDepartment = async (req, res) => {
   }
 };
 
-// Delete department
+
 const deleteDepartment = async (req, res) => {
   try {
     const department = await Department.findByIdAndDelete(req.params.id);
@@ -70,7 +68,6 @@ const deleteDepartment = async (req, res) => {
   }
 };
 
-// Export all functions
 module.exports = {
   getDepartments,
   getDepartmentById,
