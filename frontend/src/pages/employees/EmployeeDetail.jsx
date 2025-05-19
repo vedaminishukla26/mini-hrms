@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { employeeService, leaveRequestService } from '../../api/services';
+import { employeeService } from '../../api/services';
 
 const EmployeeDetail = () => {
   const { id } = useParams();

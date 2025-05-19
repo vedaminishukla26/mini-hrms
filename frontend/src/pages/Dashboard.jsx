@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { employeeService, departmentService, leaveRequestService } from '../api/services';
+import { employeeService, departmentService } from '../api/services';
 
 const Dashboard = () => {
   const [stats, setStats] = useState({
     totalEmployees: 0,
     totalDepartments: 0,
-    pendingLeaveRequests: 0
   });
-  const [recentLeaveRequests, setRecentLeaveRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -16,8 +14,6 @@ const Dashboard = () => {
     const fetchDashboardData = async () => {
       try {
         setLoading(true);
-        
-        // Fetch data in parallel
         const [
           employeesResponse, 
           departmentsResponse
@@ -32,7 +28,7 @@ const Dashboard = () => {
           totalDepartments: departmentsResponse.data.length
         });
         
-        setRecentLeaveRequests(sortedRequests);
+        
         setLoading(false);
       } catch (err) {
         console.error('Error fetching dashboard data:', err);
