@@ -2,26 +2,15 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { employeeService, departmentService } from '../../api/services';
 
-const EmployeeForm = () => {
+const DepartmentForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const isEditMode = !!id;
   
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    department: '',
-    position: '',
-    isActive: true,
-    address: {
-      street: '',
-      city: '',
-      state: '',
-      zipCode: '',
-      country: ''
-    }
+    name: '',
+    description:'',
+    manager:'',
   });
   
   const [departments, setDepartments] = useState([]);
@@ -176,7 +165,7 @@ const EmployeeForm = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Personal Information */}
           <div>
-            <h2 className="text-lg font-semibold mb-4 text-gray-600">Personal Information</h2>
+            <h2 className="text-lg font-semibold mb-4">Personal Information</h2>
             
             <div className="mb-4">
               <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">First Name *</label>
@@ -185,7 +174,7 @@ const EmployeeForm = () => {
                 id="firstName"
                 name="firstName"
                 required
-                className="w-full p-2 border border-gray-300 rounded text-gray-600"
+                className="w-full p-2 border border-gray-300 rounded text-black"
                 value={formData.firstName}
                 onChange={handleChange}
               />
@@ -198,7 +187,7 @@ const EmployeeForm = () => {
                 id="lastName"
                 name="lastName"
                 required
-                className="w-full p-2 border border-gray-300 rounded  text-gray-600"
+                className="w-full p-2 border border-gray-300 rounded"
                 value={formData.lastName}
                 onChange={handleChange}
               />
@@ -211,7 +200,7 @@ const EmployeeForm = () => {
                 id="email"
                 name="email"
                 required
-                className="w-full p-2 border border-gray-300 rounded  text-gray-600"
+                className="w-full p-2 border border-gray-300 rounded"
                 value={formData.email}
                 onChange={handleChange}
               />
@@ -223,7 +212,7 @@ const EmployeeForm = () => {
                 type="tel"
                 id="phone"
                 name="phone"
-                className="w-full p-2 border border-gray-300 rounded  text-gray-600"
+                className="w-full p-2 border border-gray-300 rounded"
                 value={formData.phone}
                 onChange={handleChange}
               />
@@ -240,7 +229,7 @@ const EmployeeForm = () => {
                 id="department"
                 name="department"
                 required
-                className="w-full p-2 border border-gray-300 rounded  text-gray-600"
+                className="w-full p-2 border border-gray-300 rounded"
                 value={formData.department}
                 onChange={handleChange}
               >
@@ -258,7 +247,7 @@ const EmployeeForm = () => {
                 id="position"
                 name="position"
                 required
-                className="w-full p-2 border border-gray-300 rounded  text-gray-600"
+                className="w-full p-2 border border-gray-300 rounded"
                 value={formData.position}
                 onChange={handleChange}
               />
@@ -289,7 +278,7 @@ const EmployeeForm = () => {
                 type="text"
                 id="street"
                 name="address.street"
-                className="w-full p-2 border border-gray-300 rounded  text-gray-600"
+                className="w-full p-2 border border-gray-300 rounded"
                 value={formData.address.street}
                 onChange={handleChange}
               />
@@ -301,7 +290,7 @@ const EmployeeForm = () => {
                 type="text"
                 id="city"
                 name="address.city"
-                className="w-full p-2 border border-gray-300 rounded  text-gray-600"
+                className="w-full p-2 border border-gray-300 rounded"
                 value={formData.address.city}
                 onChange={handleChange}
               />
@@ -313,7 +302,7 @@ const EmployeeForm = () => {
                 type="text"
                 id="state"
                 name="address.state"
-                className="w-full p-2 border border-gray-300 rounded  text-gray-600"
+                className="w-full p-2 border border-gray-300 rounded"
                 value={formData.address.state}
                 onChange={handleChange}
               />
@@ -325,7 +314,7 @@ const EmployeeForm = () => {
                 type="text"
                 id="zipCode"
                 name="address.zipCode"
-                className="w-full p-2 border border-gray-300 rounded  text-gray-600"
+                className="w-full p-2 border border-gray-300 rounded"
                 value={formData.address.zipCode}
                 onChange={handleChange}
               />
@@ -337,7 +326,7 @@ const EmployeeForm = () => {
                 type="text"
                 id="country"
                 name="address.country"
-                className="w-full p-2 border border-gray-300 rounded  text-gray-600"
+                className="w-full p-2 border border-gray-300 rounded"
                 value={formData.address.country}
                 onChange={handleChange}
               />
@@ -350,14 +339,14 @@ const EmployeeForm = () => {
           <button
             type="button"
             onClick={() => navigate('/employees')}
-            className="px-4 py-2 text-white rounded-md"
+            className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition duration-200"
           >
             Cancel
           </button>
           <button
             type="submit"
             disabled={loading}
-            className="px-4 py-2 text-white rounded-md"
+            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200 disabled:bg-blue-300"
           >
             {loading ? 'Saving...' : isEditMode ? 'Update Employee' : 'Create Employee'}
           </button>

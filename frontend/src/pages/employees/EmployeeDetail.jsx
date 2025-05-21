@@ -79,7 +79,7 @@ const EmployeeDetail = () => {
         </div>
       </div>
       <div className="bg-white rounded-lg shadow-md overflow-hidden mb-8">
-        <div className="p-6">
+        <div className="p-6 bg-white text-gray-900 rounded-lg">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
            
             <div>
@@ -87,7 +87,7 @@ const EmployeeDetail = () => {
               <div className="space-y-3">
                 <div>
                   <p className="text-sm text-gray-500">Full Name</p>
-                  <p className="font-medium">{employee.firstName} {employee.lastName}</p>
+                  <p className="font-medium text-black">{employee.firstName} {employee.lastName}</p>
                 </div>
                 <div>
                   <p className="text-sm text-gray-500">Email</p>

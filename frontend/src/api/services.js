@@ -1,6 +1,6 @@
 import apiClient from './client';
 
-// Employee services
+
 export const employeeService = {
   getAll: () => apiClient.get('/employees'),
   getById: (id) => apiClient.get(`/employees/${id}`),
@@ -10,7 +10,7 @@ export const employeeService = {
   getByDepartment: (departmentId) => apiClient.get(`/employees/department/${departmentId}`)
 };
 
-// Department services
+
 export const departmentService = {
   getAll: () => apiClient.get('/departments'),
   getById: (id) => apiClient.get(`/departments/${id}`),

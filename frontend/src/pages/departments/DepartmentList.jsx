@@ -72,7 +72,7 @@ const EmployeeList = () => {
   }
 
   return (
-    <div >
+    <div>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Employees</h1>
         <Link 
@@ -94,7 +94,7 @@ const EmployeeList = () => {
               type="text"
               id="search"
               placeholder="Search by name, email, or position"
-              className="w-full p-2 border border-gray-300 rounded text-gray-600"
+              className="w-full p-2 border border-gray-300 rounded"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -103,7 +103,7 @@ const EmployeeList = () => {
             <label htmlFor="department" className="block text-sm font-medium text-gray-700 mb-1">Department</label>
             <select
               id="department"
-              className="w-full p-2 border border-gray-300 rounded  text-gray-600"
+              className="w-full p-2 border border-gray-300 rounded"
               value={filterDepartment}
               onChange={(e) => setFilterDepartment(e.target.value)}
             >

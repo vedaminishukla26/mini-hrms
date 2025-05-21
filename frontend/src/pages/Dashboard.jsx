@@ -52,7 +52,6 @@ const Dashboard = () => {
     <div className="dashboard">
       <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
       
-      {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="bg-white rounded-lg shadow p-6">
           <h2 className="text-lg font-semibold text-gray-700">Total Employees</h2>
@@ -71,10 +70,10 @@ const Dashboard = () => {
         </div>
       </div>
       
-      {/* Quick Links */}
+      
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
+          <h2 className="text-xl font-semibold mb-4 text-gray-700">Quick Actions</h2>
           <div className="space-y-2">
             <Link to="/employees/new" className="block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 text-center">
               Add New Employee
